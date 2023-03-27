@@ -81,10 +81,17 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV4(Item item){
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV5(Item item){
+        itemRepository.save(item);
+        // PRG(post redirect get) : redirect로 새로고침해도 리스트 추가 안되게 하기
+        return "redirect:/basic/items/" + item.getId();
     }
 
     //상품수정 폼 보기
